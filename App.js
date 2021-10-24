@@ -12,10 +12,21 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
+//importing custom font from IcoMoon
+import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
+
+import icoMoonConfig from './selection.json';
+const CustomIcon = createIconSetFromIcoMoon(
+  icoMoonConfig,
+  'icomoon',
+  'icomoon.ttf',
+);
+
 const App = () => {
   const [modalDetailsVisible, setmodalDetailsVisible] = useState(false);
 
   const [modalShareVisible, setmodalShareVisible] = useState(false);
+
   return (
     <ScrollView
       style={{
@@ -54,25 +65,16 @@ const App = () => {
                 <Text style={{color: 'white', fontSize: 20}}>Контакты</Text>
               </View>
               <ProfileMoreDetailsItem
-                iconpath={require('./img/Arrow.png')}
+                iconName="Arrow"
                 text={'http://t.me/durov'}
               />
+              <ProfileMoreDetailsItem iconName="twitter-1" text={'Durov'} />
               <ProfileMoreDetailsItem
-                iconpath={require('./img/TwitterIcon.png')}
-                text={'Durov'}
-              />
-              <ProfileMoreDetailsItem
-                iconpath={require('./img/FacebookIcon.png')}
+                iconName="instagram-1"
                 text={'Pavel Durov'}
               />
-              <ProfileMoreDetailsItem
-                iconpath={require('./img/FacebookIcon.png')}
-                text={'durov'}
-              />
-              <ProfileMoreDetailsItem
-                iconpath={require('./img/TelegramIcon.png')}
-                text={'durov'}
-              />
+              <ProfileMoreDetailsItem iconName="facebook-1" text={'durov'} />
+              <ProfileMoreDetailsItem iconName="telegram-1" text={'durov'} />
             </View>
             <View
               style={{
@@ -105,21 +107,21 @@ const App = () => {
                 </TouchableWithoutFeedback>
               </View>
               <ProfileMoreDetailsItem
-                iconpath={require('./img/MessageIcon.png')}
+                iconName="chat"
                 text={
                   'They never ask people to do things they wouldn’t do themselves.'
                 }
               />
               <ProfileMoreDetailsItem
-                iconpath={require('./img/BirthdayIcon.png')}
+                iconName="cake"
                 text={'День рождения: 08 октября 1992'}
               />
               <ProfileMoreDetailsItem
-                iconpath={require('./img/GeoIcon.png')}
+                iconName="location-marker"
                 text={'Город: Санкт-Петербург'}
               />
               <ProfileMoreDetailsItem
-                iconpath={require('./img/JobIcon.png')}
+                iconName="briefcase"
                 text={'ВГУЮ в г. Санкт-Петербург'}
               />
             </View>
@@ -173,16 +175,7 @@ const App = () => {
               borderColor: '#3B2D5F',
             }}>
             <View style={{flexDirection: 'row'}}>
-              <Image
-                style={{
-                  height: undefined,
-                  width: '7%',
-                  aspectRatio: 1,
-                  resizeMode: 'contain',
-                  marginRight: 15,
-                }}
-                source={require('./img/CopyLinkIcon.png')}
-              />
+              <Icon name="document-duplicate" />
               <Text style={{color: 'white', fontSize: 20, width: '80%'}}>
                 Скопировать ссылку
               </Text>
@@ -204,16 +197,7 @@ const App = () => {
               borderColor: '#3B2D5F',
             }}>
             <View style={{flexDirection: 'row', marginBottom: 20}}>
-              <Image
-                style={{
-                  height: undefined,
-                  width: '7%',
-                  aspectRatio: 1,
-                  resizeMode: 'contain',
-                  marginRight: 15,
-                }}
-                source={require('./img/ShareIcon2.png')}
-              />
+              <Icon name="share" />
               <Text style={{color: 'white', fontSize: 20, width: '80%'}}>
                 Поделиться
               </Text>
@@ -224,7 +208,7 @@ const App = () => {
       <View
         style={{
           flexDirection: 'row',
-          flex: 3,
+          flex: 1,
           marginBottom: 10,
         }}>
         <View
@@ -233,15 +217,7 @@ const App = () => {
             flexDirection: 'column',
             alignItems: 'center',
           }}>
-          <Image
-            style={{
-              height: undefined,
-              width: '40%',
-              aspectRatio: 1,
-              resizeMode: 'contain',
-            }}
-            source={require('./img/SideMenuArrow.png')}
-          />
+          <CustomIcon size={30} color="white" style={{}} name={'Arrow-Left'} />
         </View>
         <View
           style={{
@@ -386,19 +362,23 @@ const GalleryImage = props => {
   );
 };
 
+const Icon = props => {
+  return (
+    <CustomIcon
+      size={25}
+      color="white"
+      style={{
+        marginRight: 15,
+      }}
+      name={props.name}
+    />
+  );
+};
+
 const ProfileMoreDetailsItem = props => {
   return (
-    <View style={{flexDirection: 'row', marginBottom: 20}}>
-      <Image
-        style={{
-          height: undefined,
-          width: '7%',
-          aspectRatio: 1,
-          resizeMode: 'contain',
-          marginRight: 15,
-        }}
-        source={props.iconpath}
-      />
+    <View style={{flexDirection: 'row', marginBottom: 15}}>
+      <Icon name={props.iconName} />
       <Text style={{color: '#C3B8E0', fontSize: 15, width: '80%'}}>
         {props.text}
       </Text>
