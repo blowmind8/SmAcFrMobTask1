@@ -62,7 +62,14 @@ const App = () => {
                   justifyContent: 'space-between',
                   paddingBottom: 20,
                 }}>
-                <Text style={{color: 'white', fontSize: 20}}>Контакты</Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 20,
+                    fontFamily: 'HKGrotesk-Bold',
+                  }}>
+                  Контакты
+                </Text>
               </View>
               <ProfileMoreDetailsItem
                 iconName="Arrow"
@@ -91,18 +98,22 @@ const App = () => {
                   justifyContent: 'space-between',
                   paddingBottom: 20,
                 }}>
-                <Text style={{color: 'white', fontSize: 20}}>Подробнее</Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 20,
+                    fontFamily: 'HKGrotesk-Bold',
+                  }}>
+                  Подробнее
+                </Text>
                 <TouchableWithoutFeedback
                   onPress={() => setmodalDetailsVisible(!modalDetailsVisible)}
                   style={{padding: 40}}>
-                  <Image
-                    style={{
-                      height: undefined,
-                      width: '4%',
-                      aspectRatio: 1,
-                      resizeMode: 'contain',
-                    }}
-                    source={require('./img/CloseMenuIcon.png')}
+                  <CustomIcon
+                    size={25}
+                    color="white"
+                    style={{color: '#8672BB'}}
+                    name={'backspace'}
                   />
                 </TouchableWithoutFeedback>
               </View>
@@ -160,6 +171,7 @@ const App = () => {
                   width: '100%',
                   height: '100%',
                   textAlign: 'center',
+                  fontFamily: 'HKGrotesk-Bold',
                 }}>
                 Отмена
               </Text>
@@ -175,8 +187,14 @@ const App = () => {
               borderColor: '#3B2D5F',
             }}>
             <View style={{flexDirection: 'row'}}>
-              <Icon name="document-duplicate" />
-              <Text style={{color: 'white', fontSize: 20, width: '80%'}}>
+              <BiggerIcon name="document-duplicate" />
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 20,
+                  fontFamily: 'HKGrotesk-Bold',
+                  width: '80%',
+                }}>
                 Скопировать ссылку
               </Text>
             </View>
@@ -197,8 +215,14 @@ const App = () => {
               borderColor: '#3B2D5F',
             }}>
             <View style={{flexDirection: 'row', marginBottom: 20}}>
-              <Icon name="share" />
-              <Text style={{color: 'white', fontSize: 20, width: '80%'}}>
+              <BiggerIcon name="share" />
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 20,
+                  fontFamily: 'HKGrotesk-Bold',
+                  width: '80%',
+                }}>
                 Поделиться
               </Text>
             </View>
@@ -237,7 +261,15 @@ const App = () => {
               marginBottom: 15,
             }}
           />
-          <Text style={{color: 'white', fontSize: 20, marginBottom: 5}}>
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 20,
+              marginBottom: 5,
+              fontFamily: 'HKGrotesk',
+              fontStyle: 'normal',
+              fontWeight: '700',
+            }}>
             Kat Williams
           </Text>
           <Text style={{color: '#8672BB', fontSize: 15, marginBottom: 25}}>
@@ -246,7 +278,12 @@ const App = () => {
           <Text style={{color: '#8672BB', fontSize: 15, marginBottom: 10}}>
             Россия, Санкт-Петербург
           </Text>
-          <Text style={{color: 'white', fontSize: 15, paddingBottom: 20}}>
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 15,
+              paddingBottom: 20,
+            }}>
             Место работы: Artist by Passion!
           </Text>
         </View>
@@ -257,7 +294,7 @@ const App = () => {
             alignItems: 'center',
           }}>
           <TouchableWithoutFeedback
-            style={{padding: 40}}
+            style={{padding: 80}}
             onPress={() => setmodalShareVisible(true)}>
             <Image
               style={{
@@ -303,7 +340,12 @@ const App = () => {
               borderColor: '#3B2D5F',
               borderRadius: 30,
             }}>
-            <Text style={{color: 'white', paddingHorizontal: 20}}>
+            <Text
+              style={{
+                color: 'white',
+                paddingHorizontal: 20,
+                fontFamily: 'HKGrotesk-Bold',
+              }}>
               Подробнее
             </Text>
           </TouchableOpacity>
@@ -375,11 +417,29 @@ const Icon = props => {
   );
 };
 
+const BiggerIcon = props => {
+  return (
+    <CustomIcon
+      size={30}
+      color="white"
+      style={{
+        marginRight: 15,
+      }}
+      name={props.name}
+    />
+  );
+};
+
 const ProfileMoreDetailsItem = props => {
   return (
     <View style={{flexDirection: 'row', marginBottom: 15}}>
       <Icon name={props.iconName} />
-      <Text style={{color: '#C3B8E0', fontSize: 15, width: '80%'}}>
+      <Text
+        style={{
+          color: '#C3B8E0',
+          fontSize: 15,
+          width: '80%',
+        }}>
         {props.text}
       </Text>
     </View>
