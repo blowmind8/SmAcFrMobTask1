@@ -13,12 +13,9 @@ import {
 } from 'react-native';
 
 const App = () => {
-  const [
-    modalDetailsVisible,
-    setmodalDetailsVisible,
-    modalShareVisible,
-    setmodalShareVisible,
-  ] = useState(false);
+  const [modalDetailsVisible, setmodalDetailsVisible] = useState(false);
+
+  const [modalShareVisible, setmodalShareVisible] = useState(false);
   return (
     <ScrollView
       style={{
@@ -33,6 +30,109 @@ const App = () => {
         onRequestClose={() => {
           setmodalDetailsVisible(!modalDetailsVisible);
         }}>
+        <View style={{flex: 1, backgroundColor: 'rgba(0,0,0,0.5)'}}>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'column-reverse',
+            }}>
+            <View
+              style={{
+                backgroundColor: '#2B2146',
+                paddingTop: 20,
+                paddingHorizontal: 20,
+                flexDirection: 'column',
+                borderBottomWidth: 1,
+                borderColor: '#3B2D5F',
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  paddingBottom: 20,
+                }}>
+                <Text style={{color: 'white', fontSize: 20}}>Контакты</Text>
+              </View>
+              <ProfileMoreDetailsItem
+                iconpath={require('./img/Arrow.png')}
+                text={'http://t.me/durov'}
+              />
+              <ProfileMoreDetailsItem
+                iconpath={require('./img/TwitterIcon.png')}
+                text={'Durov'}
+              />
+              <ProfileMoreDetailsItem
+                iconpath={require('./img/FacebookIcon.png')}
+                text={'Pavel Durov'}
+              />
+              <ProfileMoreDetailsItem
+                iconpath={require('./img/FacebookIcon.png')}
+                text={'durov'}
+              />
+              <ProfileMoreDetailsItem
+                iconpath={require('./img/TelegramIcon.png')}
+                text={'durov'}
+              />
+            </View>
+            <View
+              style={{
+                backgroundColor: '#2B2146',
+                paddingTop: 20,
+                paddingHorizontal: 20,
+                flexDirection: 'column',
+                borderBottomWidth: 1,
+                borderColor: '#3B2D5F',
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  paddingBottom: 20,
+                }}>
+                <Text style={{color: 'white', fontSize: 20}}>Подробнее</Text>
+                <TouchableWithoutFeedback
+                  onPress={() => setmodalDetailsVisible(!modalDetailsVisible)}
+                  style={{padding: 40}}>
+                  <Image
+                    style={{
+                      height: undefined,
+                      width: '4%',
+                      aspectRatio: 1,
+                      resizeMode: 'contain',
+                    }}
+                    source={require('./img/CloseMenuIcon.png')}
+                  />
+                </TouchableWithoutFeedback>
+              </View>
+              <ProfileMoreDetailsItem
+                iconpath={require('./img/MessageIcon.png')}
+                text={
+                  'They never ask people to do things they wouldn’t do themselves.'
+                }
+              />
+              <ProfileMoreDetailsItem
+                iconpath={require('./img/BirthdayIcon.png')}
+                text={'День рождения: 08 октября 1992'}
+              />
+              <ProfileMoreDetailsItem
+                iconpath={require('./img/GeoIcon.png')}
+                text={'Город: Санкт-Петербург'}
+              />
+              <ProfileMoreDetailsItem
+                iconpath={require('./img/JobIcon.png')}
+                text={'ВГУЮ в г. Санкт-Петербург'}
+              />
+            </View>
+          </View>
+        </View>
+      </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalShareVisible}
+        onRequestClose={() => {
+          setmodalShareVisible(!modalShareVisible);
+        }}>
         <View
           style={{
             flex: 1,
@@ -41,41 +141,27 @@ const App = () => {
           }}>
           <View
             style={{
+              padding: 20,
               backgroundColor: '#2B2146',
-              paddingTop: 20,
-              paddingHorizontal: 20,
-              flexDirection: 'column',
-              borderBottomWidth: 1,
-              borderColor: '#3B2D5F',
+              marginTop: 10,
+              justifyContent: 'center',
+              flexDirection: 'row',
+              borderRadius: 20,
             }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                paddingBottom: 20,
-              }}>
-              <Text style={{color: 'white', fontSize: 20}}>Контакты</Text>
-            </View>
-            <ProfileMoreDetailsItem
-              iconpath={require('./img/Arrow.png')}
-              text={'http://t.me/durov'}
-            />
-            <ProfileMoreDetailsItem
-              iconpath={require('./img/TwitterIcon.png')}
-              text={'Durov'}
-            />
-            <ProfileMoreDetailsItem
-              iconpath={require('./img/FacebookIcon.png')}
-              text={'Pavel Durov'}
-            />
-            <ProfileMoreDetailsItem
-              iconpath={require('./img/FacebookIcon.png')}
-              text={'durov'}
-            />
-            <ProfileMoreDetailsItem
-              iconpath={require('./img/TelegramIcon.png')}
-              text={'durov'}
-            />
+            <TouchableWithoutFeedback
+              onPress={() => setmodalShareVisible(!modalShareVisible)}
+              style={{padding: 40}}>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 20,
+                  width: '100%',
+                  height: '100%',
+                  textAlign: 'center',
+                }}>
+                Отмена
+              </Text>
+            </TouchableWithoutFeedback>
           </View>
           <View
             style={{
@@ -86,49 +172,55 @@ const App = () => {
               borderBottomWidth: 1,
               borderColor: '#3B2D5F',
             }}>
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                style={{
+                  height: undefined,
+                  width: '7%',
+                  aspectRatio: 1,
+                  resizeMode: 'contain',
+                  marginRight: 15,
+                }}
+                source={require('./img/CopyLinkIcon.png')}
+              />
+              <Text style={{color: 'white', fontSize: 20, width: '80%'}}>
+                Скопировать ссылку
+              </Text>
+            </View>
             <View
               style={{
                 flexDirection: 'row',
-                justifyContent: 'space-between',
+                justifyContent: 'center',
                 paddingBottom: 20,
-              }}>
-              <Text style={{color: 'white', fontSize: 20}}>Подробнее</Text>
-              <TouchableWithoutFeedback
-                onPress={() => setmodalDetailsVisible(!modalDetailsVisible)}
-                style={{padding: 40}}>
-                <Image
-                  style={{
-                    height: undefined,
-                    width: '4%',
-                    aspectRatio: 1,
-                    resizeMode: 'contain',
-                  }}
-                  source={require('./img/CloseMenuIcon.png')}
-                />
-              </TouchableWithoutFeedback>
+              }}></View>
+          </View>
+          <View
+            style={{
+              backgroundColor: '#2B2146',
+              paddingTop: 20,
+              paddingHorizontal: 20,
+              flexDirection: 'column',
+              borderBottomWidth: 1,
+              borderColor: '#3B2D5F',
+            }}>
+            <View style={{flexDirection: 'row', marginBottom: 20}}>
+              <Image
+                style={{
+                  height: undefined,
+                  width: '7%',
+                  aspectRatio: 1,
+                  resizeMode: 'contain',
+                  marginRight: 15,
+                }}
+                source={require('./img/ShareIcon2.png')}
+              />
+              <Text style={{color: 'white', fontSize: 20, width: '80%'}}>
+                Поделиться
+              </Text>
             </View>
-            <ProfileMoreDetailsItem
-              iconpath={require('./img/MessageIcon.png')}
-              text={
-                'They never ask people to do things they wouldn’t do themselves.'
-              }
-            />
-            <ProfileMoreDetailsItem
-              iconpath={require('./img/BirthdayIcon.png')}
-              text={'День рождения: 08 октября 1992'}
-            />
-            <ProfileMoreDetailsItem
-              iconpath={require('./img/GeoIcon.png')}
-              text={'Город: Санкт-Петербург'}
-            />
-            <ProfileMoreDetailsItem
-              iconpath={require('./img/JobIcon.png')}
-              text={'ВГУЮ в г. Санкт-Петербург'}
-            />
           </View>
         </View>
       </Modal>
-
       <View
         style={{
           flexDirection: 'row',
@@ -188,7 +280,9 @@ const App = () => {
             flexDirection: 'column',
             alignItems: 'center',
           }}>
-          <TouchableWithoutFeedback style={{padding: 40}}>
+          <TouchableWithoutFeedback
+            style={{padding: 40}}
+            onPress={() => setmodalShareVisible(true)}>
             <Image
               style={{
                 height: undefined,
